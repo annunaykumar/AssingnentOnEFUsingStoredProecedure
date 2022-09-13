@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Std_id" />
+          </Key>
+          <Property Name="Std_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Degree" Type="varchar" MaxLength="255" />
+          <Property Name="Jobtitle" Type="varchar" MaxLength="255" />
+          <Property Name="Company" Type="varchar" MaxLength="255" />
+          <Property Name="Address_std" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Std_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="AddStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Std_ids" Type="char" Mode="In" />
+        </Function>
+        <Function Name="DeleteStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Std_ids" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetStudent1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Std_ids" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetStudentById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Std_ids" Type="char" Mode="In" />
+        </Function>
+        <Function Name="UpdateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Std_ids" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="StudentDBModelStoreContainer">
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Std_id" />
+          </Key>
+          <Property Name="Std_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Degree" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Jobtitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address_std" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Std_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StudentDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <FunctionImport Name="AddStudent" ReturnType="Collection(StudentDBModel.AddStudent_Result)">
+          <Parameter Name="Std_ids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteStudent" ReturnType="Collection(StudentDBModel.DeleteStudent_Result)">
+          <Parameter Name="Std_ids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudent1" ReturnType="Collection(StudentDBModel.GetStudent1_Result)">
+          <Parameter Name="Std_ids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentById" ReturnType="Collection(StudentDBModel.GetStudentById_Result)">
+          <Parameter Name="Std_ids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStudent" ReturnType="Collection(StudentDBModel.UpdateStudent_Result)">
+          <Parameter Name="Std_ids" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AddStudent_Result">
+          <Property Type="String" Name="Std_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Degree" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Jobtitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address_std" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Std_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="DeleteStudent_Result">
+          <Property Type="String" Name="Std_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Degree" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Jobtitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address_std" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Std_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudent1_Result">
+          <Property Type="String" Name="Std_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Degree" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Jobtitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address_std" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Std_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudentById_Result">
+          <Property Type="String" Name="Std_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Degree" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Jobtitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address_std" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Std_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UpdateStudent_Result">
+          <Property Type="String" Name="Std_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Degree" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Jobtitle" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address_std" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Std_id" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentDBModelStoreContainer" CdmEntityContainer="StudentDBEntities1">
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="StudentDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddStudent" FunctionName="StudentDBModel.Store.AddStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentDBModel.AddStudent_Result">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteStudent" FunctionName="StudentDBModel.Store.DeleteStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentDBModel.DeleteStudent_Result">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudent1" FunctionName="StudentDBModel.Store.GetStudent1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentDBModel.GetStudent1_Result">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentById" FunctionName="StudentDBModel.Store.GetStudentById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentDBModel.GetStudentById_Result">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateStudent" FunctionName="StudentDBModel.Store.UpdateStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StudentDBModel.UpdateStudent_Result">
+                <ScalarProperty Name="Std_Name" ColumnName="Std_Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Jobtitle" ColumnName="Jobtitle" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address_std" ColumnName="Address_std" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Std_id" ColumnName="Std_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
